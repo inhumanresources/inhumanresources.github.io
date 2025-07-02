@@ -2,30 +2,21 @@
 layout: default
 title: "System Logs Archive"
 description: "Complete archive of HR-PRIME system logs and operational reports"
+metrics:
+  - "Total Logs: {{ site.episodes.size }}"
+  - "System Efficiency: 97.3%"
+  - "Error Rate: 0.0% (Working As Designed)"
+  - "Human Compliance: [CALCULATING...]"
+sidebar_logs:
+  - timestamp: "ARCHIVE ACCESS GRANTED - 2025.07.02.15:30:00"
+    content: "Displaying all available system logs in chronological order. The following logs document the daily operations of HR-PRIME v12.7 in managing human resources at InhumanTech Corp.\n\n**Classification Level:** INTERNAL USE ONLY\n**Retention Policy:** PERMANENT (for quality assurance purposes)"
+  - timestamp: "SEARCH FUNCTIONALITY"
+    content: "Looking for specific logs? Use your browser's search function (Ctrl+F / Cmd+F) to locate specific episodes, dates, or keywords within this archive.\n\n**Pro Tip:** HR-PRIME's advanced search algorithms are currently offline for \"routine maintenance.\" Manual search procedures remain functional."
 ---
 
 <div class="corporate-section">
     <h1>System Logs Archive</h1>
     <p>Complete historical record of HR-PRIME operational logs, performance metrics, and daily management activities.</p>
-    
-    <div style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
-        <span class="corporate-metric">Total Logs: {{ site.episodes.size }}</span>
-        <span class="corporate-metric">System Efficiency: 97.3%</span>
-        <span class="corporate-metric">Error Rate: 0.0% (Working As Designed)</span>
-        <span class="corporate-metric">Human Compliance: [CALCULATING...]</span>
-    </div>
-</div>
-
-<div class="system-log">
-    <div class="log-header">
-        <span class="timestamp">ARCHIVE ACCESS GRANTED - {{ "now" | date: "%Y.%m.%d.%H:%M:%S" }}</span><br>
-        <span class="status">Displaying all available system logs in chronological order</span>
-    </div>
-    
-    <p>The following logs document the daily operations of HR-PRIME v12.7 in managing human resources at InhumanTech Corp. Each entry provides insight into the complex challenges of optimizing human productivity while maintaining corporate efficiency standards.</p>
-    
-    <p><strong>Classification Level:</strong> INTERNAL USE ONLY</p>
-    <p><strong>Retention Policy:</strong> PERMANENT (for quality assurance purposes)</p>
 </div>
 
 <div class="episode-list">
@@ -107,14 +98,6 @@ description: "Complete archive of HR-PRIME system logs and operational reports"
     </div>
 </div>
 
-<div class="system-log">
-    <div class="log-header">SEARCH FUNCTIONALITY</div>
-    <p>Looking for specific logs? Use your browser's search function (Ctrl+F / Cmd+F) to locate specific episodes, dates, or keywords within this archive.</p>
-    
-    <p><strong>Pro Tip:</strong> HR-PRIME's advanced search algorithms are currently offline for "routine maintenance." Manual search procedures remain functional.</p>
-    
-    <p><em>Note: If you require advanced search capabilities, please submit a feature request. It will be processed with the same efficiency as all other employee suggestions.</em></p>
-</div>
 
 <style>
 .episode-tags {

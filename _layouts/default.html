@@ -41,9 +41,52 @@
         </div>
     </header>
 
-    <main class="main-content">
-        {{ content }}
-    </main>
+    {% if page.metrics %}
+    <div class="metrics-toolbar">
+        <div class="metrics-content">
+            <span class="metrics-label">System Metrics:</span>
+            {% for metric in page.metrics %}
+            <span class="corporate-metric">{{ metric }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="page-container">
+        <main class="main-content">
+            {{ content }}
+        </main>
+        
+        {% if page.sidebar_logs or layout.sidebar_logs %}
+        <aside class="sidebar">
+            {% for log in page.sidebar_logs %}
+            <div class="sidebar-section">
+                <div class="system-log sidebar-log">
+                    <div class="log-header">
+                        <span class="timestamp">{{ log.timestamp }}</span><br>
+                        {% if log.entity %}<span class="status">{{ log.entity }}</span>{% endif %}
+                    </div>
+                    {{ log.content | markdownify }}
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if layout.sidebar_logs %}
+                {% for log in layout.sidebar_logs %}
+                <div class="sidebar-section">
+                    <div class="system-log sidebar-log">
+                        <div class="log-header">
+                            <span class="timestamp">{{ log.timestamp }}</span><br>
+                            {% if log.entity %}<span class="status">{{ log.entity }}</span>{% endif %}
+                        </div>
+                        {{ log.content | markdownify }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </aside>
+        {% endif %}
+    </div>
 
     <footer class="site-footer">
         <div class="footer-content">
