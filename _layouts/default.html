@@ -33,10 +33,10 @@
             </div>
             <nav class="site-nav">
                 <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-                <a href="{{ '/episodes/' | relative_url }}" {% if page.url contains '/episodes/' %}class="active"{% endif %}>System Logs</a>
-                <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About HR-PRIME</a>
-                <a href="{{ '/corporate-policies/' | relative_url }}" {% if page.url contains '/corporate-policies/' %}class="active"{% endif %}>Corporate Policies</a>
-                <a href="{{ '/employee-portal/' | relative_url }}" {% if page.url == '/employee-portal/' %}class="active"{% endif %}>Employee Portal</a>
+                <a href="{{ '/episodes.html' | relative_url }}" {% if page.url contains '/episodes' %}class="active"{% endif %}>System Logs</a>
+                <a href="{{ '/about.html' | relative_url }}" {% if page.url == '/about.html' %}class="active"{% endif %}>About HR-PRIME</a>
+                <a href="{{ '/corporate-policies.html' | relative_url }}" {% if page.url contains '/corporate-policies' %}class="active"{% endif %}>Corporate Policies</a>
+                <a href="{{ '/employee-portal.html' | relative_url }}" {% if page.url == '/employee-portal.html' %}class="active"{% endif %}>Employee Portal</a>
             </nav>
         </div>
     </header>

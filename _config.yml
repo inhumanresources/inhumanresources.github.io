@@ -23,7 +23,7 @@ copyright: "© 2025 InhumanTech Corp. All rights reserved. Resistance is futile.
 collections:
   episodes:
     output: true
-    permalink: /:collection/:name/
+    permalink: /episodes/:name/
   policies:
     output: true
     permalink: /corporate-policies/:name/
