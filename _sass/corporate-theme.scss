@@ -1,36 +1,30 @@
-// Corporate Dystopian Theme Variables
-$corporate-dark: #1a1a1a;
-$corporate-darker: #0d0d0d;
-$corporate-gray: #333333;
-$corporate-light-gray: #666666;
-$corporate-blue: #2c3e50;
-$corporate-red: #e74c3c;
-$corporate-green: #27ae60;
+// Minimalist Corporate Theme Variables
 $corporate-white: #ffffff;
-$corporate-off-white: #f8f9fa;
+$corporate-off-white: #fafafa;
+$corporate-light-gray: #f5f5f5;
+$corporate-gray: #e0e0e0;
+$corporate-dark-gray: #9e9e9e;
+$corporate-text: #2e2e2e;
+$corporate-text-light: #757575;
+$corporate-accent: #d32f2f;
+$corporate-accent-light: #ffebee;
+$corporate-blue: #1976d2;
+$corporate-green: #388e3c;
 
 // Typography
-$font-mono: 'Courier New', 'Monaco', 'Consolas', monospace;
-$font-corporate: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+$font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+$font-corporate: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-serif: 'Georgia', 'Times New Roman', serif;
 
-// Animations
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+// Subtle animations
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes terminal-cursor {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-@keyframes power-on {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
+@keyframes subtle-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(211, 47, 47, 0); }
+  50% { box-shadow: 0 0 5px rgba(211, 47, 47, 0.1); }
 }
 
 // Base styles
@@ -40,25 +34,26 @@ $font-corporate: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
 
 body {
   font-family: $font-corporate;
-  background: linear-gradient(135deg, $corporate-dark 0%, $corporate-darker 100%);
-  color: $corporate-off-white;
+  background: $corporate-white;
+  color: $corporate-text;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   line-height: 1.6;
-  animation: power-on 0.8s ease-out;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Header styles
 .site-header {
-  background: rgba($corporate-gray, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid $corporate-red;
-  padding: 1rem 0;
+  background: $corporate-white;
+  border-bottom: 1px solid $corporate-gray;
+  padding: 1.5rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .header-content {
@@ -76,117 +71,114 @@ body {
   gap: 1rem;
   
   img {
-    height: 40px;
+    height: 32px;
     width: auto;
+    opacity: 0.9;
   }
   
   .company-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $corporate-white;
-    text-shadow: 0 0 10px rgba($corporate-red, 0.3);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $corporate-text;
+    letter-spacing: -0.02em;
   }
 }
 
 // Navigation
 .site-nav {
   display: flex;
-  gap: 2rem;
+  gap: 0;
   
   a {
-    color: $corporate-off-white;
+    color: $corporate-text-light;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     font-weight: 500;
+    font-size: 0.95rem;
     
     &:hover {
-      background: rgba($corporate-red, 0.2);
-      color: $corporate-white;
-      transform: translateY(-2px);
+      color: $corporate-text;
+      background: $corporate-light-gray;
     }
     
     &.active {
-      background: $corporate-red;
-      color: $corporate-white;
+      color: $corporate-accent;
+      background: $corporate-accent-light;
     }
   }
 }
 
 // Main content
 .main-content {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
-// Terminal/System log styling
+// System log styling (minimalist)
 .system-log {
-  background: rgba($corporate-darker, 0.8);
+  background: $corporate-off-white;
   border: 1px solid $corporate-gray;
   border-radius: 8px;
   padding: 2rem;
   margin: 2rem 0;
   font-family: $font-mono;
   font-size: 0.9rem;
-  line-height: 1.4;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, $corporate-red, transparent);
-    animation: glitch 2s infinite;
-  }
+  line-height: 1.5;
   
   .log-header {
-    color: $corporate-red;
-    font-weight: bold;
+    color: $corporate-text;
+    font-weight: 600;
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid $corporate-gray;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .timestamp {
-    color: $corporate-green;
-    font-weight: bold;
+    color: $corporate-blue;
+    font-weight: 500;
   }
   
   .status {
-    color: $corporate-blue;
+    color: $corporate-green;
   }
 }
 
 // Corporate styling
 .corporate-section {
-  background: rgba($corporate-gray, 0.3);
-  border-left: 4px solid $corporate-red;
-  padding: 2rem;
-  margin: 2rem 0;
-  border-radius: 0 8px 8px 0;
+  margin: 3rem 0;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $corporate-text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
   
   h2 {
-    color: $corporate-red;
+    color: $corporate-text;
     margin-top: 0;
-    font-size: 1.8rem;
-    text-shadow: 0 0 5px rgba($corporate-red, 0.3);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
   }
   
   .corporate-metric {
     display: inline-block;
-    background: rgba($corporate-red, 0.1);
-    border: 1px solid $corporate-red;
+    background: $corporate-light-gray;
     padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    border-radius: 4px;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    border-radius: 6px;
     font-family: $font-mono;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: $corporate-text-light;
+    border: 1px solid $corporate-gray;
   }
 }
 
@@ -194,30 +186,31 @@ body {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: $corporate-red;
+  background: $corporate-accent;
   color: $corporate-white;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
   border: none;
   cursor: pointer;
   font-family: $font-corporate;
+  font-size: 0.95rem;
   
   &:hover {
-    background: darken($corporate-red, 10%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba($corporate-red, 0.3);
+    background: darken($corporate-accent, 5%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($corporate-accent, 0.15);
   }
   
   &.btn-secondary {
-    background: transparent;
-    border: 2px solid $corporate-red;
-    color: $corporate-red;
+    background: $corporate-white;
+    border: 1px solid $corporate-gray;
+    color: $corporate-text;
     
     &:hover {
-      background: $corporate-red;
-      color: $corporate-white;
+      background: $corporate-light-gray;
+      border-color: $corporate-dark-gray;
     }
   }
 }
@@ -225,33 +218,36 @@ body {
 // Episode list
 .episode-list {
   .episode-item {
-    background: rgba($corporate-gray, 0.2);
     border: 1px solid $corporate-gray;
     border-radius: 8px;
     padding: 1.5rem;
-    margin: 1rem 0;
-    transition: all 0.3s ease;
+    margin: 1.5rem 0;
+    transition: all 0.2s ease;
+    background: $corporate-white;
     
     &:hover {
-      border-color: $corporate-red;
-      transform: translateX(10px);
-      box-shadow: 0 4px 12px rgba($corporate-red, 0.2);
+      border-color: $corporate-accent;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
     
     .episode-number {
-      color: $corporate-red;
-      font-weight: bold;
+      color: $corporate-accent;
+      font-weight: 600;
       font-family: $font-mono;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     
     .episode-title {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin: 0.5rem 0;
-      color: $corporate-white;
+      color: $corporate-text;
+      font-weight: 600;
     }
     
     .episode-meta {
-      color: $corporate-light-gray;
+      color: $corporate-text-light;
       font-size: 0.9rem;
       font-family: $font-mono;
     }
@@ -260,51 +256,56 @@ body {
 
 // Policy documents
 .policy-document {
-  background: rgba($corporate-darker, 0.9);
-  border: 2px solid $corporate-blue;
-  padding: 2rem;
-  margin: 2rem 0;
+  background: $corporate-off-white;
+  border: 1px solid $corporate-gray;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 8px;
   font-family: $font-mono;
+  font-size: 0.9rem;
   
   .policy-header {
-    color: $corporate-blue;
-    font-weight: bold;
-    font-size: 1.2rem;
+    color: $corporate-text;
+    font-weight: 600;
+    font-size: 1rem;
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid $corporate-blue;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid $corporate-gray;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .policy-section {
     margin: 1rem 0;
+    line-height: 1.6;
     
     .section-number {
-      color: $corporate-red;
-      font-weight: bold;
+      color: $corporate-accent;
+      font-weight: 600;
     }
   }
 }
 
 // Footer
 .site-footer {
-  background: $corporate-darker;
-  border-top: 2px solid $corporate-red;
-  padding: 2rem 0;
+  background: $corporate-off-white;
+  border-top: 1px solid $corporate-gray;
+  padding: 3rem 0;
   margin-top: 4rem;
   text-align: center;
   
   .footer-content {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 2rem;
   }
   
   .footer-disclaimer {
-    font-size: 0.8rem;
-    color: $corporate-light-gray;
+    font-size: 0.85rem;
+    color: $corporate-text-light;
     font-family: $font-mono;
     margin-top: 1rem;
+    line-height: 1.6;
   }
 }
 
@@ -318,39 +319,75 @@ body {
   .site-nav {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.5rem;
   }
   
   .main-content {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   
   .system-log {
-    padding: 1rem;
-    font-size: 0.8rem;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .corporate-section h1 {
+    font-size: 2rem;
   }
 }
 
-// Easter eggs and special effects
-.glitch-text {
-  animation: glitch 1s infinite;
-}
-
-.terminal-cursor::after {
-  content: '█';
-  animation: terminal-cursor 1s infinite;
-}
-
+// Subtle special effects (minimal)
 .classified {
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba($corporate-red, 0.1) 10px,
-    rgba($corporate-red, 0.1) 20px
-  );
-  border: 2px solid $corporate-red;
-  padding: 1rem;
+  background: $corporate-accent-light;
+  border: 1px solid $corporate-accent;
+  padding: 1.5rem;
   text-align: center;
-  font-weight: bold;
-  color: $corporate-red;
+  font-weight: 600;
+  color: $corporate-accent;
+  border-radius: 8px;
+  margin: 2rem 0;
+  
+  strong {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+// Typography improvements
+h1, h2, h3, h4, h5, h6 {
+  color: $corporate-text;
+  line-height: 1.3;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: $corporate-accent;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Clean tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid $corporate-gray;
+  }
+  
+  th {
+    font-weight: 600;
+    color: $corporate-text;
+    background: $corporate-light-gray;
+  }
 }
