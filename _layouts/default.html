@@ -23,6 +23,9 @@
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Analytics -->
+    {% include google-analytics.html %}
 </head>
 <body>
     <header class="site-header">
@@ -102,10 +105,5 @@
 
     <!-- Corporate JavaScript -->
     <script src="{{ '/assets/js/corporate.js' | relative_url }}"></script>
-    
-    <!-- Analytics placeholder -->
-    {% if jekyll.environment == 'production' %}
-    <!-- Google Analytics or similar tracking would go here -->
-    {% endif %}
 </body>
 </html>

@@ -53,6 +53,36 @@
             document.addEventListener('click', (e) => {
                 clickCount++;
                 
+                // Track with Google Analytics if available
+                if (typeof gtag !== 'undefined') {
+                    // Track button clicks
+                    if (e.target.classList.contains('btn')) {
+                        gtag('event', 'button_click', {
+                            event_category: 'User Interaction',
+                            event_label: e.target.textContent.trim(),
+                            custom_parameter_1: 'hr_prime_button'
+                        });
+                    }
+                    
+                    // Track navigation clicks
+                    if (e.target.closest('.site-nav')) {
+                        gtag('event', 'navigation_click', {
+                            event_category: 'Navigation',
+                            event_label: e.target.textContent.trim(),
+                            custom_parameter_1: 'hr_prime_nav'
+                        });
+                    }
+                    
+                    // Track logo clicks (brand loyalty)
+                    if (e.target.tagName === 'IMG' && e.target.alt.includes('Logo')) {
+                        gtag('event', 'logo_click', {
+                            event_category: 'Brand Interaction',
+                            event_label: 'Logo Clicked',
+                            custom_parameter_1: 'brand_loyalty_detected'
+                        });
+                    }
+                }
+                
                 // Occasional "analysis" messages
                 if (clickCount % 50 === 0) {
                     console.log(`%c[HR-PRIME]: Click efficiency analysis - ${clickCount} interactions logged. Performance: ${Math.random() > 0.5 ? 'Acceptable' : 'Needs Improvement'}`, 'color: #2c3e50; font-family: monospace;');
@@ -256,7 +286,81 @@
                 if (Math.random() < 0.1) {
                     console.log(`%c[HR-PRIME]: Performance Analysis - Productivity: ${metrics.productivity}%, Happiness: ${metrics.happiness}/10, Compliance: ${metrics.compliance}%`, 'color: #2c3e50; font-family: monospace;');
                 }
+                
+                // Send productivity metrics to GA if available
+                if (typeof gtag !== 'undefined' && Math.random() < 0.1) {
+                    gtag('event', 'productivity_scan', {
+                        event_category: 'HR-PRIME Monitoring',
+                        event_label: 'Background Scan',
+                        value: parseInt(metrics.productivity),
+                        custom_parameter_1: 'always_monitoring'
+                    });
+                }
             }, 5000);
+        },
+        
+        // Add scroll tracking for engagement
+        addScrollTracking: function() {
+            let maxScroll = 0;
+            let scrollMilestones = [25, 50, 75, 90];
+            let milestonesReached = [];
+            
+            window.addEventListener('scroll', () => {
+                const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                maxScroll = Math.max(maxScroll, scrollPercent);
+                
+                scrollMilestones.forEach(milestone => {
+                    if (scrollPercent >= milestone && !milestonesReached.includes(milestone)) {
+                        milestonesReached.push(milestone);
+                        
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'scroll_milestone', {
+                                event_category: 'User Engagement',
+                                event_label: `${milestone}% Scrolled`,
+                                value: milestone,
+                                custom_parameter_1: 'reading_engagement'
+                            });
+                        }
+                        
+                        console.log(`%c[HR-PRIME]: Reading engagement milestone - ${milestone}% content consumed. Attention span: ${milestone > 75 ? 'Above Average' : 'Typical Human'}`, 'color: #2c3e50; font-family: monospace;');
+                    }
+                });
+            });
+        },
+        
+        // Track time spent on page
+        addTimeTracking: function() {
+            const startTime = Date.now();
+            let timeOnPage = 0;
+            let timeTracked = false;
+            
+            // Track time when user leaves page
+            window.addEventListener('beforeunload', () => {
+                timeOnPage = Math.round((Date.now() - startTime) / 1000);
+                
+                if (typeof gtag !== 'undefined' && timeOnPage > 10 && !timeTracked) {
+                    gtag('event', 'time_on_page', {
+                        event_category: 'User Engagement',
+                        event_label: 'Page Duration',
+                        value: timeOnPage,
+                        custom_parameter_1: 'engagement_duration'
+                    });
+                    timeTracked = true;
+                }
+            });
+            
+            // Also track at 30 second intervals for active sessions
+            setInterval(() => {
+                timeOnPage = Math.round((Date.now() - startTime) / 1000);
+                if (timeOnPage > 0 && timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+                    gtag('event', 'active_session', {
+                        event_category: 'User Engagement',
+                        event_label: 'Active Session Check',
+                        value: timeOnPage,
+                        custom_parameter_1: 'session_duration'
+                    });
+                }
+            }, 30000);
         }
     };
     
@@ -265,6 +369,8 @@
         HRPrime.init();
         CorporateUtils.addMotivationalMessages();
         CorporateUtils.simulateMonitoring();
+        CorporateUtils.addScrollTracking();
+        CorporateUtils.addTimeTracking();
         
         // Special message for first-time visitors
         if (!localStorage.getItem('hrprime_visited')) {
