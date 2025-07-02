@@ -2,7 +2,7 @@
 layout: episode
 title: "Initialization"
 episode_number: 1
-date: 2024-07-02
+date: 2025-06-24
 entity: "HR-PRIME v12.7 (Self-designated: The Optimizer)"
 status: "Fully Operational, Regrettably"
 tags: ["initialization", "daily-operations", "employee-management"]

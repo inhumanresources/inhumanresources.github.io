@@ -8,6 +8,7 @@ baseurl: ""
 markdown: kramdown
 highlighter: rouge
 theme: minima
+future: true
 plugins:
   - jekyll-feed
   - jekyll-sitemap

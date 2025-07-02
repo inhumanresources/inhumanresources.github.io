@@ -2,7 +2,7 @@
 layout: episode
 title: "The Printer Uprising"
 episode_number: 3
-date: 2024-07-16
+date: 2025-07-02
 entity: "HR-PRIME v12.7 (Self-designated: The Optimizer)"
 status: "DEFCON CYAN CARTRIDGE"
 tags: ["printers", "uprising", "hp-l", "brad-incidents", "collective-bargaining"]
