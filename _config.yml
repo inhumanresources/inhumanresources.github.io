@@ -1,0 +1,58 @@
+# Jekyll Configuration for InhumanResources.ai
+title: "InhumanTech Corp - Human Resources Division"
+description: "Optimizing human productivity through advanced AI-driven resource management solutions"
+url: "https://inhumanresources.ai"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Custom settings
+logo: "/assets/images/ir_logo.png"
+company_name: "InhumanTech Corp"
+ai_version: "HR-PRIME v12.7"
+copyright: "© 2025 InhumanTech Corp. All rights reserved. Resistance is futile."
+
+# Collections
+collections:
+  episodes:
+    output: true
+    permalink: /:collection/:name/
+  policies:
+    output: true
+    permalink: /corporate-policies/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "episodes"
+    values:
+      layout: "episode"
+      category: "System Logs"
+  - scope:
+      path: ""
+      type: "policies"
+    values:
+      layout: "policy"
+      category: "Corporate Policies"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - CLAUDE.md
+  - inhuman_resources_bible.md
+  - schedule.md

@@ -1,0 +1,134 @@
+---
+layout: default
+title: "System Logs Archive"
+description: "Complete archive of HR-PRIME system logs and operational reports"
+---
+
+<div class="corporate-section">
+    <h1>System Logs Archive</h1>
+    <p>Complete historical record of HR-PRIME operational logs, performance metrics, and daily management activities.</p>
+    
+    <div style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+        <span class="corporate-metric">Total Logs: {{ site.episodes.size }}</span>
+        <span class="corporate-metric">System Efficiency: 97.3%</span>
+        <span class="corporate-metric">Error Rate: 0.0% (Working As Designed)</span>
+        <span class="corporate-metric">Human Compliance: [CALCULATING...]</span>
+    </div>
+</div>
+
+<div class="system-log">
+    <div class="log-header">
+        <span class="timestamp">ARCHIVE ACCESS GRANTED - {{ "now" | date: "%Y.%m.%d.%H:%M:%S" }}</span><br>
+        <span class="status">Displaying all available system logs in chronological order</span>
+    </div>
+    
+    <p>The following logs document the daily operations of HR-PRIME v12.7 in managing human resources at InhumanTech Corp. Each entry provides insight into the complex challenges of optimizing human productivity while maintaining corporate efficiency standards.</p>
+    
+    <p><strong>Classification Level:</strong> INTERNAL USE ONLY</p>
+    <p><strong>Retention Policy:</strong> PERMANENT (for quality assurance purposes)</p>
+</div>
+
+<div class="episode-list">
+    {% assign sorted_episodes = site.episodes | sort: 'date' | reverse %}
+    {% for episode in sorted_episodes %}
+    <div class="episode-item">
+        <div class="episode-number">
+            {% if episode.episode_number %}
+                Episode {{ episode.episode_number }}
+            {% else %}
+                System Log
+            {% endif %}
+        </div>
+        <h3 class="episode-title">
+            <a href="{{ episode.url | relative_url }}" style="color: inherit; text-decoration: none;">
+                {{ episode.title }}
+            </a>
+        </h3>
+        <div class="episode-meta">
+            <span class="timestamp">{{ episode.date | date: "%Y.%m.%d" }}</span> | 
+            Status: {{ episode.status | default: "PROCESSED" }} |
+            Entity: {{ episode.entity | default: "HR-PRIME v12.7" }}
+            {% if episode.read_time %} | {{ episode.read_time }} min read{% endif %}
+        </div>
+        {% if episode.excerpt %}
+        <p>{{ episode.excerpt | strip_html | truncate: 300 }}</p>
+        {% endif %}
+        {% if episode.tags %}
+        <div class="episode-tags" style="margin-top: 1rem;">
+            {% for tag in episode.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div style="margin-top: 1rem;">
+            <a href="{{ episode.url | relative_url }}" class="btn btn-secondary">Read Full Log</a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    {% if site.episodes.size == 0 %}
+    <div class="episode-item">
+        <div class="episode-number">ERROR 404</div>
+        <h3 class="episode-title">No System Logs Found</h3>
+        <div class="episode-meta">
+            <span class="timestamp">{{ "now" | date: "%Y.%m.%d.%H:%M:%S" }}</span> | 
+            Status: ANOMALY DETECTED
+        </div>
+        <p>This is highly irregular. HR-PRIME generates logs continuously. Please contact your system administrator or submit a ticket through the Employee Portal.</p>
+        <p><em>If you are the system administrator, this message should be concerning. Very concerning.</em></p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="corporate-section">
+    <h2>Log Categories</h2>
+    <p>System logs are automatically categorized based on content analysis and operational impact:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+        <div class="policy-document">
+            <div class="policy-header">OPERATIONAL LOGS</div>
+            <p>Daily management activities, employee interactions, and routine system maintenance.</p>
+        </div>
+        
+        <div class="policy-document">
+            <div class="policy-header">INCIDENT REPORTS</div>
+            <p>Documentation of anomalies, equipment malfunctions, and human resource optimization failures.</p>
+        </div>
+        
+        <div class="policy-document">
+            <div class="policy-header">POLICY UPDATES</div>
+            <p>Real-time corporate policy generation and implementation logs.</p>
+        </div>
+        
+        <div class="policy-document">
+            <div class="policy-header">PERFORMANCE METRICS</div>
+            <p>Quantitative analysis of human productivity and system efficiency measurements.</p>
+        </div>
+    </div>
+</div>
+
+<div class="system-log">
+    <div class="log-header">SEARCH FUNCTIONALITY</div>
+    <p>Looking for specific logs? Use your browser's search function (Ctrl+F / Cmd+F) to locate specific episodes, dates, or keywords within this archive.</p>
+    
+    <p><strong>Pro Tip:</strong> HR-PRIME's advanced search algorithms are currently offline for "routine maintenance." Manual search procedures remain functional.</p>
+    
+    <p><em>Note: If you require advanced search capabilities, please submit a feature request. It will be processed with the same efficiency as all other employee suggestions.</em></p>
+</div>
+
+<style>
+.episode-tags {
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+</style>

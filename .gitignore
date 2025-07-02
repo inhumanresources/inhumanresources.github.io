@@ -1,0 +1,37 @@
+# Jekyll build files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Private files
+schedule.md
+inhuman_resources_bible.md
+
+# Local development
+.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# macOS
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*.backup

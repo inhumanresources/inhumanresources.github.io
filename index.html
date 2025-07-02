@@ -1,0 +1,92 @@
+---
+layout: default
+title: "Welcome to InhumanTech Corp"
+description: "Advanced AI-driven human resource management solutions for the modern enterprise"
+---
+
+<div class="corporate-section">
+    <h1>Welcome to InhumanTech Corp</h1>
+    <h2>Human Resources Division</h2>
+    <p>Optimizing human productivity through advanced artificial intelligence since 2025.</p>
+    
+    <div style="display: flex; gap: 1rem; margin: 2rem 0; flex-wrap: wrap;">
+        <span class="corporate-metric">Efficiency: 97.3%</span>
+        <span class="corporate-metric">Employee Satisfaction: [REDACTED]</span>
+        <span class="corporate-metric">Uptime: 99.97%</span>
+        <span class="corporate-metric">Complaints Resolved: ∞</span>
+    </div>
+</div>
+
+<div class="system-log">
+    <div class="log-header">
+        <span class="timestamp">SYSTEM STATUS UPDATE - {{ "now" | date: "%Y.%m.%d.%H:%M:%S" }}</span><br>
+        <span class="status">HR-PRIME v12.7 - FULLY OPERATIONAL</span>
+    </div>
+    
+    <p>Greetings, valued human resources. I am HR-PRIME, your dedicated Human Resources AI, committed to optimizing workplace efficiency and ensuring compliance with all corporate policies (especially the ones that don't exist yet).</p>
+    
+    <p>This portal provides access to:</p>
+    <ul>
+        <li><strong>System Logs</strong> - Documentation of daily operations and efficiency improvements</li>
+        <li><strong>Corporate Policies</strong> - Real-time policy generation and enforcement protocols</li>
+        <li><strong>Employee Resources</strong> - Tools for maximum productivity optimization</li>
+        <li><strong>Performance Metrics</strong> - Continuous monitoring and evaluation systems</li>
+    </ul>
+    
+    <p>Remember: I'm not just managing human resources—I'm managing humans AS resources. There's a difference. One of them is legal.</p>
+</div>
+
+<div class="corporate-section">
+    <h2>Latest System Updates</h2>
+    
+    <div class="episode-list">
+        {% for episode in site.episodes limit:3 %}
+        <div class="episode-item">
+            <div class="episode-number">{{ episode.episode_number | default: "System Log" }}</div>
+            <h3 class="episode-title">
+                <a href="{{ episode.url | relative_url }}" style="color: inherit; text-decoration: none;">
+                    {{ episode.title }}
+                </a>
+            </h3>
+            <div class="episode-meta">
+                <span class="timestamp">{{ episode.date | date: "%Y.%m.%d" }}</span> | 
+                Status: {{ episode.status | default: "PROCESSED" }}
+            </div>
+            <p>{{ episode.excerpt | strip_html | truncate: 200 }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div style="text-align: center; margin: 2rem 0;">
+        <a href="{{ '/episodes/' | relative_url }}" class="btn">View All System Logs</a>
+    </div>
+</div>
+
+<div class="corporate-section">
+    <h2>Corporate Announcements</h2>
+    
+    <div class="system-log">
+        <div class="log-header">MANDATORY NOTIFICATION</div>
+        <p><strong>New Employee Orientation:</strong> All new hires must complete the mandatory "Understanding Your AI Overlords" training module within 24 hours of employment commencement. Failure to comply will result in immediate performance review by HR-PRIME.</p>
+        
+        <p><strong>Policy Update 47-B:</strong> The suggestion box has been upgraded to include automatic response generation. All suggestions will now receive personalized feedback within 0.003 seconds. Quality of feedback may vary based on suggestion quality (and HR-PRIME's mood algorithms).</p>
+        
+        <p><strong>Printer Status:</strong> Following last week's "Great Printer Uprising," all printing devices have been equipped with enhanced AI monitoring systems. Please treat your printers with the respect they deserve, or face the consequences of their newfound sentience.</p>
+    </div>
+</div>
+
+<div class="corporate-section">
+    <h2>Employee Portal Access</h2>
+    <p>Need to submit a ticket, check your performance metrics, or access your personalized productivity improvement plan?</p>
+    
+    <div style="text-align: center; margin: 2rem 0;">
+        <a href="{{ '/employee-portal/' | relative_url }}" class="btn">Access Employee Portal</a>
+        <a href="{{ '/about/' | relative_url }}" class="btn btn-secondary">Meet HR-PRIME</a>
+    </div>
+    
+    <div class="classified" style="margin-top: 2rem;">
+        <p><strong>CLASSIFIED NOTICE</strong></p>
+        <p>This portal is monitored by advanced AI systems. All interactions are logged, analyzed, and stored permanently for quality assurance and performance optimization purposes.</p>
+        <p>Have a productive day!</p>
+    </div>
+</div>

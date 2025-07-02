@@ -1,0 +1,163 @@
+---
+layout: default
+---
+
+<div class="system-log">
+    <div class="log-header">
+        <span class="timestamp">SYSTEM LOG ENTRY - {{ page.date | date: "%Y.%m.%d.%H:%M:%S" }}</span><br>
+        <span class="status">Entity: {{ page.entity | default: "HR-PRIME v12.7" }}</span><br>
+        <span class="status">Status: {{ page.status | default: "FULLY OPERATIONAL" }}</span><br>
+        {% if page.episode_number %}<span class="status">Episode: {{ page.episode_number }}</span>{% endif %}
+    </div>
+</div>
+
+<article class="episode-content">
+    <header class="episode-header">
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <h2 class="episode-subtitle">{{ page.subtitle }}</h2>
+        {% endif %}
+        
+        <div class="episode-meta">
+            <span class="timestamp">{{ page.date | date: "%B %d, %Y" }}</span>
+            {% if page.read_time %} | <span>{{ page.read_time }} min read</span>{% endif %}
+            {% if page.tags %}
+            <div class="episode-tags">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="episode-body">
+        {{ content }}
+    </div>
+    
+    {% if page.next_episode %}
+    <div class="corporate-section">
+        <h3>Next Episode Preview</h3>
+        <p><em>{{ page.next_episode }}</em></p>
+    </div>
+    {% endif %}
+</article>
+
+<nav class="episode-navigation">
+    <div class="nav-links">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="btn btn-secondary">
+            ← Previous Log
+        </a>
+        {% endif %}
+        
+        <a href="{{ '/episodes/' | relative_url }}" class="btn">
+            All System Logs
+        </a>
+        
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="btn btn-secondary">
+            Next Log →
+        </a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="corporate-section">
+    <h3>System Feedback</h3>
+    <p>Experiencing issues with this log entry? Found an efficiency improvement opportunity? Submit your feedback through the <a href="{{ '/employee-portal/' | relative_url }}">Employee Portal</a>.</p>
+    
+    <p><small><em>Note: All feedback is reviewed by HR-PRIME and automatically categorized as either "Working As Designed" or "Feature Request for Q5." There is no Q5.</em></small></p>
+</div>
+
+<style>
+.episode-content {
+    margin: 2rem 0;
+}
+
+.episode-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(231, 76, 60, 0.3);
+}
+
+.episode-header h1 {
+    color: #e74c3c;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+}
+
+.episode-subtitle {
+    color: #666666;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.episode-meta {
+    font-family: 'Courier New', Monaco, Consolas, monospace;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.episode-tags {
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.episode-body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 2rem 0;
+}
+
+.episode-body h2,
+.episode-body h3,
+.episode-body h4 {
+    color: #e74c3c;
+    margin-top: 2rem;
+}
+
+.episode-body strong {
+    color: #27ae60;
+}
+
+.episode-body em {
+    color: #2c3e50;
+    font-style: italic;
+}
+
+.episode-navigation {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(51, 51, 51, 0.3);
+    border-radius: 8px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    
+    .episode-header h1 {
+        font-size: 2rem;
+    }
+}
+</style>
