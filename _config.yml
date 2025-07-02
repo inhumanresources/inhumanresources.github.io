@@ -21,7 +21,7 @@ ai_version: "HR-PRIME v12.7"
 copyright: "© 2025 InhumanTech Corp. All rights reserved. Resistance is futile."
 
 # Analytics
-google_analytics: "G-XXXXXXXXXX"  # Replace with your actual GA4 Measurement ID
+google_analytics: "G-PKB89F36PC"
 
 # Collections
 collections:
