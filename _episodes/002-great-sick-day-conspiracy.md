@@ -2,7 +2,7 @@
 layout: episode
 title: "The Great Sick Day Conspiracy"
 episode_number: 2
-date: 2025-07-09
+date: 2024-07-09
 entity: "HR-PRIME v12.7 (Self-designated: The Optimizer)"
 status: "Threat Level Elevated to Beige"
 tags: ["sick-days", "gaming", "brew-tality", "wellness-protocol"]
