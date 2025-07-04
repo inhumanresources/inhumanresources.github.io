@@ -25,7 +25,8 @@ sidebar_logs:
     <h2>Latest System Updates</h2>
     
     <div class="episode-list">
-        {% for episode in site.episodes limit:3 %}
+        {% assign sorted_episodes = site.episodes | sort: 'date' | reverse %}
+        {% for episode in sorted_episodes limit:3 %}
         <div class="episode-item">
             <div class="episode-number">{{ episode.episode_number | default: "System Log" }}</div>
             <h3 class="episode-title">
