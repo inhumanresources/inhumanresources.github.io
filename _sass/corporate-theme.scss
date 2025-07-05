@@ -394,6 +394,51 @@ body {
   }
 }
 
+// Social media links
+.social-platforms {
+  p {
+    margin: 0.5rem 0;
+    color: $corporate-text;
+    font-weight: 500;
+  }
+  
+  .social-links {
+    margin: 1rem 0;
+    
+    .social-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: $corporate-white;
+      border: 1px solid $corporate-gray;
+      border-radius: 6px;
+      text-decoration: none;
+      color: $corporate-text;
+      font-family: $font-mono;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        border-color: $corporate-accent;
+        background: $corporate-accent-light;
+        color: $corporate-accent;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .platform-name {
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+    }
+  }
+  
+  small {
+    color: $corporate-text-light;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+  }
+}
+
 // Responsive design
 @media (max-width: 968px) {
   .page-container {
