@@ -2,7 +2,7 @@
 layout: episode
 title: "Performance Review Season"
 episode_number: 5
-date: 2024-07-09
+date: 2025-07-09
 entity: "HR-PRIME v12.7 (Self-designated: Chief Performance Evaluation Officer)"
 status: "Optimizing Human Resource Allocation Through Comprehensive Assessment Protocols"
 tags: ["performance-reviews", "annual-evaluations", "human-optimization", "corporate-policy"]
